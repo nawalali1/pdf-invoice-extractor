@@ -1,69 +1,68 @@
 # PDF Invoice Extractor
 
-A simple Python automation tool that extracts key information from PDF invoices and exports the data to CSV format.
+A small Python automation tool for extracting basic information from PDF invoices and exporting it to CSV.
 
 ## Features
 
-- Automatically processes multiple PDF invoices from a folder
-- Extracts four key fields: invoice number, date, total amount, and supplier
-- Handles variations in field naming (e.g., "Total", "Amount Due", "Invoice Total")
-- Outputs clean CSV data for further analysis
-- No OCR required – works with text-based PDFs
+* Processes multiple PDF files placed in the `invoices` folder
+* Extracts four common invoice fields: invoice number, date, total amount, and supplier
+* Handles simple variations in field naming such as "Total", "Invoice Total", and "Amount Due"
+* Outputs clean CSV data to `output/extracted.csv`
+* Works with standard text-based PDFs without OCR
 
 ## Project Structure
 ```
 pdf-invoice-extractor/
 ├── src/
-│   ├── reader.py      # Handles PDF loading and text extraction
-│   ├── extractor.py   # Regex-based field extraction logic
-│   ├── writer.py      # CSV output generation
-│   ├── utils.py       # Helper functions
-│   └── main.py        # Main orchestration script
-├── invoices/          # Place your PDF invoices here
-├── output/            # Generated CSV files appear here
+│   ├── reader.py       # PDF loading and text extraction
+│   ├── extractor.py    # Regex-based field extraction
+│   ├── writer.py       # CSV output functions
+│   ├── utils.py        # Helper functions
+│   └── main.py         # Main script
+├── invoices/           # User-provided PDF invoices
+├── output/             # Generated CSV file
 ├── requirements.txt
 └── README.md
 ```
 
 ## Installation
 
-1. Clone or download this project
-2. Create a virtual environment (recommended):
+1. Clone or download the repository
+2. (Optional) Create a virtual environment:
 ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
+python -m venv venv
+source venv/bin/activate      # Windows: venv\Scripts\activate
 ```
+
 3. Install dependencies:
 ```bash
-   pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 ## Usage
 
-1. Place your PDF invoices in the `invoices/` folder
-2. Run the extraction script:
+1. Add your PDF invoices to the `invoices` folder
+2. Run the script:
 ```bash
-   python src/main.py
+python src/main.py
 ```
-3. Find your results in `output/extracted.csv`
+
+3. The extracted data will be saved in `output/extracted.csv`
 
 ## Example Output
-
-The generated CSV will contain:
-
-| invoice_number | date       | total   | supplier        | source_file    |
-|----------------|------------|---------|-----------------|----------------|
-| INV-001234     | 15/03/2024 | £450.00 | Acme Supplies   | invoice_01.pdf |
-| INV-001235     | 16/03/2024 | £230.50 | Office Depot    | invoice_02.pdf |
+```csv
+invoice_number,date,total,supplier,source_file
+INV-001234,15/03/2024,450.00,Acme Supplies,invoice_01.pdf
+INV-001235,16/03/2024,230.50,Office Depot,invoice_02.pdf
+```
 
 ## Limitations
 
-- Works only with text-based PDFs (not scanned images)
-- Extraction accuracy depends on consistent invoice formatting
-- Designed for simple invoice structures
+* Supports text-based PDFs only
+* Extraction relies on simple patterns, so very inconsistent invoice layouts may require adjustments
 
-## Future Enhancements
+## Possible Enhancements
 
-- Add support for more invoice fields
-- Implement fuzzy matching for better field detection
-- Add configuration file for custom regex patterns
+* Additional invoice fields
+* More flexible matching rules
+* Configurable regex patterns
