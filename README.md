@@ -61,8 +61,15 @@ INV-001235,16/03/2024,230.50,Office Depot,invoice_02.pdf
 * Supports text-based PDFs only
 * Extraction relies on simple patterns, so very inconsistent invoice layouts may require adjustments
 
-## Possible Enhancements
+## Planned future Enhancements
 
 * Additional invoice fields
 * More flexible matching rules
 * Configurable regex patterns
+
+## Author
+
+Nawal
+- GitHub: [@nawalali1](https://github.com/nawalali1)
+- LinkedIn: www.linkedin.com/in/nawal-ali-871a09332
+
